@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 10px;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 50vh;
+    resize: none;
+    overflow: scroll;
+    margin-bottom: 1px;
+    padding:10px;
+    border-radius: 5px;
+}
+
+textarea::placeholder {
+    text-align: center;
+    padding-top: 20px;
+}
+
+input, button {
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.btn {
+    width: calc(50% / 3 - 3px);
+    color: white;
+    background: #555;
+}
+
+.btn-search {
+    background: #222;
+    border: 1px solid black;
+}
+
+.result {
+    display: block;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.clignotant {
+    /* Animation */
+    /* -webkit-animation: ombre ease-in infinite alternate 500ms;
+    -moz-animation: ombre ease-in infinite alternate 500ms;
+    animation: ombre ease-in infinite alternate 500ms; */
+    -webkit-animation: 2s linear infinite condemed_blink_effect; 
+    animation: 2s linear infinite condemed_blink_effect;
+
+  }
+  
