@@ -1,16 +1,14 @@
-let textarea, inputEl, resultEl, result, i=0, current = 0, txtname; 
+let textarea, inputEl, resultEl, result, i=0, current = 0; 
 
 document.getElementById('upload')
-			.addEventListener('change', function() {
-			
+			.addEventListener('change', function() {                
 			var fl=new FileReader();
 			fl.onload=function(){
 				document.getElementById('text')
 						.textContent=fl.result;
 			}			
             fl.readAsText(this.files[0]);
-        })
-        
+        })       
 
 const removewords = () => {
     if(inputEl.value!==''){
@@ -24,38 +22,41 @@ const removewords = () => {
         alert("The text doesn't contain this word!");
         }
     resultEl.innerHTML = textarea.value;}else{
-        alert("Merci de remplir le champs!");
+        alert("Please fill the fields!");
     }
 };
 
+
+const removeselection = () => {
+    if (window.getSelection) {
+        selection = window.getSelection().toString();}
+    if(selection.length>0){
+        while(textarea.value.includes(selection)){
+            textarea.value = textarea.value.replace(selection,'');}
+    resultEl.innerHTML = textarea.value;}
+};
+
+
 const removenumbers = () => {
-    textarea.value = textarea.value.replace(/\d/g,'');
+    regex=new RegExp('[1-9]?[0-9]','g');
+    textarea.value = textarea.value.replace(regex,'');
     resultEl.innerHTML = textarea.value;
 };
 
-
-const replacenumbers = () => {
-    if(replace.value!==''){
-        textarea.value = textarea.value.replace(/\d{5,}/g,replace.value);
-        resultEl.innerHTML = textarea.value;}else{
-            alert('Please fill the replace text');
-            replace.setAttribute("class","clignotant");
+const removefirstnumbers = () => {
+    regex = new RegExp('^[1-9]?[0-9]','g');
+    regex2 = new RegExp('[\n][1-9]?[0-9]','g');
+    regex3 = new RegExp('[\r][1-9]?[0-9]','g');
+    if(textarea.value.match(regex)){
+        textarea.value = textarea.value.replace(regex,'');
+    }else{
+        if(textarea.value.match(regex2)){
+        textarea.value = textarea.value.replace(regex2,'\n');}else{
+            if(textarea.value.match(regex3)){
+                textarea.value = textarea.value.replace(regex3,'\r');}            
         }
-};
-
- const removenumbers4 = () => {
-    textarea.value = textarea.value.replace(/\d{5,}/g,'');
-//     var regex= new RegExp(/\D/g);
-//     if(textarea.value.match(regex)){
-//         while(textarea.value.includes(regex)){
-//             textarea.value = textarea.value.replace(/\D/g,'');
-//     }if(!textarea.value.includes(regex)){
-//         alert("successfully done!");
-//     }
-// }else{
-//     alert("The text doesn't contain numbers");
-//     }
-resultEl.innerHTML = textarea.value;
+    };
+    resultEl.innerHTML = textarea.value;
 };
 
 const replacewords = () => {
@@ -70,19 +71,14 @@ const replacewords = () => {
         alert("The text doesn't contain this word!");
         }
     resultEl.innerHTML = textarea.value;}else{
-        alert("Merci de remplir le champs!");
+        alert("Please fill the fields!");
     }
 };
 
 function downloadFile() {
-    if(txtname.value==''){
-        var fname = 'Modified'+i+'.txt';
-    }else{
-        var fname = txtname.value+'.txt';
-    }
     const content = document.getElementById('text').value;
-    const filename = fname;
-       
+    const filename = 'Modified'+i+'.txt';
+          i++;
  
     const element = document.createElement('a');
     
@@ -101,28 +97,14 @@ function downloadFile() {
     element.click();
     
     document.body.removeChild(element);
-    i++;
   };
   
-//   window.onload = () => {
-//     document.getElementById('download').
-//     addEventListener('click', e => {     
+
+
+window.onload = () => {    
     
-//       const content = document.getElementById('text').value;
-//       const filename = 'Modified'+i+'.txt';
-//           i++; 
-   
-//       if (filename && content) {
-//         downloadFile(filename, content);
-//       }
-//     });
-//   };
-
-
-window.onload = () => {        
     textarea = document.querySelector('#text');
     inputEl = document.querySelector('#search');
     replace = document.querySelector('#replace');
     resultEl = document.querySelector('#printResult');
-    txtname = document.querySelector('#txtname');
 };

@@ -11,7 +11,7 @@ body {
 
 textarea {
     width: 100%;
-    height: 50vh;
+    height: 70vh;
     resize: none;
     overflow: scroll;
     margin-bottom: 1px;
@@ -24,18 +24,20 @@ textarea::placeholder {
     padding-top: 20px;
 }
 
-input, button {
+input {
     padding: 5px 10px;
     border: 1px solid grey;
     border-radius: 5px;
-    width: 50%;
-    margin-bottom: 5px;
+    width: 95%;
+    margin-top: 5px;
 }
 
+
 .btn {
-    width: calc(50% / 3 - 3px);
+    width: calc(100% / 3 - 3px);
     color: white;
     background: #555;
+    margin-top: 5px;
 }
 
 .btn-search {
@@ -53,13 +55,28 @@ input, button {
     text-align: left;
 }
 
-.clignotant {
-    /* Animation */
-    /* -webkit-animation: ombre ease-in infinite alternate 500ms;
-    -moz-animation: ombre ease-in infinite alternate 500ms;
-    animation: ombre ease-in infinite alternate 500ms; */
-    -webkit-animation: 2s linear infinite condemed_blink_effect; 
-    animation: 2s linear infinite condemed_blink_effect;
+#upload{
+    width: max-content;
+}
 
-  }
-  
+
+.container{
+    width: 100%;
+
+}
+.right{
+    float:right;
+    width: 80%;
+
+}
+.left{
+float: left;
+width: 20%;
+}
+
+#search{
+    margin-top: 5px;
+}
+#replace{
+    margin-top:5px;
+}

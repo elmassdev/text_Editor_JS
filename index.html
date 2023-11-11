@@ -2,77 +2,35 @@
 <html>
 <head>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width">
-      <meta name="description" content="text file, editor, seqrch, file editor">
+      <meta name="description" content="HTML, CSS, Javascript">
+      <meta name="keywords" content="HTML, CSS, JavaScript">
+      <meta name="author" content="@elmassoudi7">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Text Editor</title>
       <link rel="stylesheet" href="style.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
-  <div class="row">
-    <input class="col-md-4" type="file" name="upload" id="upload">
-    <input class="col-md-4 " type="text" name="txtname" id="txtname" placeholder="Enter the name of your final document">
-    <button class="btn bg-success col-md-4 " id="download" onclick="downloadFile()" >Download file</button>
-  </div>
-    
+    <input type="file" name="upload"  id="upload" placeholder="please choose a .txt file">
 <br>
     <div class="wrapper">
         <textarea name="text" id="text" placeholder="Enter you text here"></textarea>
-        <div class="">
-            <div class="float-left">
-                <input type="text" id="search" placeholder="Enter search term" />
-                <input type="text" id="replace" placeholder="Enter replace term" /></div>
-                <div class="row">
-                  <button class="btn bg-danger col-md-3 mx-auto" onclick="removewords()">Remove</button>
-                  <button class="btn bg-danger col-md-3 mx-auto" onclick="removenumbers4()">Remove numbers +4 digits</button>
-                  <button class="btn bg-danger col-md-3 mx-auto" onclick="removenumbers()">Remove numbers all numbers</button>
-                  <button class="btn bg-warning col-md-3 mx-auto" onclick="replacewords()">Replace</button>
-                  <button class="btn bg-warning col-md-3 mx-auto" onclick="replacenumbers()">Replace numbers</button>
+        <div class="container">
+            <div class="left">
+                <input type="text" id="search" placeholder="Enter search words" />
+                <input type="text" id="replace" placeholder="Enter replacing words" /></div>
+                <div class="right">
+                  <button class="btn bg-warning" onclick="replacewords()">Replace</button>
+                <button class="btn bg-danger" onclick="removewords()">Remove</button>
+                <button class="btn bg-danger" onclick="removenumbers()">Remove all numbers</button><br>
+                <button class="btn bg-danger" onclick="removefirstnumbers()">Remove numbers in the beginning</button>
+                <button class="btn bg-danger width" onclick="removeselection()" >Remove text similar to selection</button>                
+                <button class="btn bg-primary" id="download" onclick="downloadFile()" >Download file</button>                 
                 </div>               
-                
-  
         </div>
     </div>    
     <script src="script.js"></script>
 
 </body>
 </html>
-<!-- Added to Git ElmassDev:  11/11/2023 -->
-<!-- <script type="text/javascript">
-  let i=0;
-    function downloadFile(filename, content) {
-     
-      const element = document.createElement('a');
-      
-     
-      const blob = new Blob([content], { type: 'plain/text' });
-    
-       
-      const fileUrl = URL.createObjectURL(blob);
-      
-      
-      element.setAttribute('href', fileUrl); //file location
-      element.setAttribute('download', filename); // file name
-      element.style.display = 'none';
-      
-       
-      document.body.appendChild(element);
-      element.click();
-      
-      
-      document.body.removeChild(element);
-    };
-    
-    window.onload = () => {
-      document.getElementById('download').
-      addEventListener('click', e => {          
-        const filename = 'Modified'+i+'.txt';
-        i++;  
-                     
-        const content = document.getElementById('text').value;        
-        if (filename && content) {
-          downloadFile(filename, content);
-        }
-      });
-    };
-    </script> -->
